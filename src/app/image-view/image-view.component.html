@@ -1,0 +1,10 @@
+<div class="images-grid">
+  <div class="image-container" *ngFor="let image of images" (click)="selectImage(image)">
+    <img [src]="image.url" alt="{{ image.title }}" (click)="selectImage(image)">
+    <h3>{{ image.title }}</h3>
+    <p>{{ image.description }}</p>
+    <!-- Add comment functionality -->
+  </div>
+</div>
+<app-image-modal *ngIf="selectedImage" [image]="selectedImage"></app-image-modal>
+

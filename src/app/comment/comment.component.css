@@ -1,0 +1,15 @@
+.comment-section {
+  padding: 1rem;
+  background-color: #f9f9f9;
+}
+form textarea {
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+form button {
+  background-color: #0066ff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+}
+

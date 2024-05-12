@@ -1,0 +1,19 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  background: rgb(238, 209, 153);
+}
+.logo {
+  height: 50px;
+}
+button {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+}
+.image-display, .image-upload {
+  margin: 1rem;
+}
+

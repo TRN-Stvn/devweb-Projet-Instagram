@@ -1,0 +1,65 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 100vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    padding: 20px;
+    background: rgb(255, 255, 255); /* Change to a cleaner white background */
+    border-radius: 8px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.2); /* Enhanced shadow for better depth */
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  color: #555e67;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+input[type="text"], button {
+  padding: 10px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+}
+button {
+  background-color: #0056b3;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #004494;
+  color: white;
+
+}
+
+.image-section {
+  margin-right: 20px; /* Add space between the image and the data section */
+}
+.image-section img {
+  max-width: 50vw; /* Maximum width of 50% of the viewport width */
+  max-height: 70vh; /* Maximum height of 70% of the viewport height */
+  object-fit: contain; /* Ensures the image is scaled correctly within the constraints */
+}
+

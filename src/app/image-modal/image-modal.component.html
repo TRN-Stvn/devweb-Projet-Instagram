@@ -1,0 +1,20 @@
+<div class="modal-backdrop" *ngIf="isVisible" (click)="onBackdropClick($event)">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="image-section" style="flex: 1; margin-right: 20px;">
+      <img [src]="selectedImage.url" alt="{{ selectedImage.title }}">
+    </div>
+    <div class="data-section" style="flex: 1; overflow-y: auto;">
+      <button class="close-button" (click)="closeModal()">&times;</button>
+      <h3>{{ selectedImage.title }}</h3>
+      <p>{{ selectedImage.description }}</p>
+      <div *ngFor="let comment of comments">
+        <p>{{ comment }}</p>
+      </div>
+      <form (submit)="addComment()">
+        <textarea [(ngModel)]="newComment" name="newComment" rows="3"></textarea>
+        <button type="submit">Add Comment</button>
+      </form>
+    </div>
+  </div>
+</div>
+
