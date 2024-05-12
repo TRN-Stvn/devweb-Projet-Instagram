@@ -1,7 +1,9 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MockImageService } from '../services/mock-image.service';
+import { Component, OnInit, ViewChild, inject } from '@angular/core';
+// import { MockImageService } from '../services/mockservices/mock-image.service';
+import { ImageService } from '../services/image.service';
 import { CommonModule } from '@angular/common';
 import { ImageModalComponent } from '../image-modal/image-modal.component';
+import { Image } from '../services/image';
 
 @Component({
   selector: 'app-image-view',
@@ -10,24 +12,43 @@ import { ImageModalComponent } from '../image-modal/image-modal.component';
   templateUrl: './image-view.component.html',
   styleUrls: ['./image-view.component.css']
 })
-export class ImageViewComponent implements OnInit {
-  images: any[] = [];
-  selectedImage: any = null;
+
+export class ImageViewComponent
+// implements OnInit
+{
+  images: Image[] = [];
+  selectedImage: Image | null = null;
+  private imageService: ImageService = inject(ImageService);
 
   @ViewChild(ImageModalComponent) imageModalComponent!: ImageModalComponent;
 
-  constructor(private imageService: MockImageService) {}
+  constructor() {
+    this.imageService.getAllImages().then((imageList: Image[]) => {
+      this.images = imageList;
 
-  ngOnInit(): void {
-    this.images = this.imageService.getImages();
+    });
   }
 
-  selectImage(image: any) {
+  getImageUrl(imagePath: string): string {
+    return `http://localhost:5000/${imagePath}`;
+  }
+
+
+  // ngOnInit() {
+  //   this.imageService.getImages().subscribe(data => {
+  //     this.images = data.map(item => ({
+  //       ...item,
+  //       imagePath: item.image_path.replace(/\\/g, '/') // Replace backslashes
+  //     }));
+  //   });
+  // }
+
+  selectImage(image: Image) {
     this.selectedImage = image;
     this.imageModalComponent.selectImage(image); // Ensure this line is here to pass the image to the modal
   }
 
-  addComment(imageId: number, comment: string): void {
-    // Implement the service call to add a comment
-  }
+  // addComment(imageId: number, comment: string): void {
+  //   // Implement the service call to add a comment
+  // }
 }

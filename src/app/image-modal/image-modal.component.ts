@@ -40,5 +40,8 @@ export class ImageModalComponent {
     this.selectedImage = image;
     this.openModal();  // Ensure this line is here to open the modal
   }
+  getImageUrl(imagePath: string): string {
+    return `http://localhost:5000/${imagePath}`;
+  }
 }
 

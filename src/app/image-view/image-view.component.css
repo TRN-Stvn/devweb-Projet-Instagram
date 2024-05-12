@@ -9,14 +9,20 @@
   padding: 10px;
   background-color: #f9f9f9; /* Light grey background for each container */
   max-width: 300px; /* Limit the width of each image container */
+  max-height: 500px; /* Limit the height of each image container */
+  overflow: auto; /* Add scroll if content exceeds container size */
 }
 img {
   width: 100%;
   height: auto;
+  max-width: 100%; /* Ensure the image does not exceed the container width */
+  max-height: 300px; /* Limit and crop the image height */
+  object-fit: cover; /* Crop to cover the container */
   border-radius: 8px;
   transition: transform 0.3s ease;
 }
 img:hover {
   transform: scale(1.05);
 }
+
 

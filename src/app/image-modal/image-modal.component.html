@@ -1,14 +1,20 @@
 <div class="modal-backdrop" *ngIf="isVisible" (click)="onBackdropClick($event)">
   <div class="modal" (click)="$event.stopPropagation()">
     <div class="image-section" style="flex: 1; margin-right: 20px;">
-      <img [src]="selectedImage.url" alt="{{ selectedImage.title }}">
+      <img [src]="getImageUrl(selectedImage.image_path)" alt="{{ selectedImage.title }}">
     </div>
     <div class="data-section" style="flex: 1; overflow-y: auto;">
       <button class="close-button" (click)="closeModal()">&times;</button>
       <h3>{{ selectedImage.title }}</h3>
+      <p class="author">Author: {{ selectedImage.author }}</p>
       <p>{{ selectedImage.description }}</p>
-      <div *ngFor="let comment of comments">
-        <p>{{ comment }}</p>
+      <!-- <p>Category: {{ selectedImage.category }}</p> -->
+      <p>Date Published: {{ selectedImage.date_published | date:'medium' }}</p>
+      
+      <div class="comments-container" style="min-height: 100px; padding: 10px; margin-bottom: 20px; background-color: #f0f0f0; overflow-y: auto;">
+        <div *ngFor="let comment of comments">
+          <p>{{ comment }}</p>
+        </div>
       </div>
       <form (submit)="addComment()">
         <textarea [(ngModel)]="newComment" name="newComment" rows="3"></textarea>
