@@ -1,0 +1,23 @@
+<div class="modal-backdrop" *ngIf="isVisible" (click)="onBackdropClick($event)">
+  <div class="modal" (click)="$event.stopPropagation()">
+    <div class="image-section" style="flex: 1; margin-right: 20px;">
+      <img [src]="getImageUrl(selectedImage.image_path)" alt="{{ selectedImage.title }}">
+    </div>
+    <div class="data-section" style="flex: 1; overflow-y: auto;height: 80vh">
+      <button class="close-button" (click)="closeModal()">&times;</button>
+      <h3>{{ selectedImage.title }}</h3>
+      <p class="author">Author: {{ selectedImage.author }}</p>
+      <p>{{ selectedImage.description }}</p>
+      <!-- <p>Category: {{ selectedImage.category }}</p> -->
+      <p>Date Published: {{ selectedImage.date_published | date:'medium' }}</p>
+      <div class="comment-section">
+        <div class="comment-list">
+          <app-comment-view [image_id]="selectedImage.id"></app-comment-view>
+        </div>
+        <div class="comment-form">
+          <app-comment-upload [image_id]="selectedImage.id"></app-comment-upload>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

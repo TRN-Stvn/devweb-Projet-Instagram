@@ -1,0 +1,10 @@
+<div class="comments-list">
+    <div class="comment-container" *ngFor="let comment of comments">
+        <h3 class="comment-author">{{ comment.pseudo }}</h3>
+        <p class="comment-content">{{ comment.contenu }}</p>
+        <p class="comment-date">{{ comment.date_published }}</p>
+    </div>
+</div>
+
+<!-- <button (click)="loadComments()">Load Comments</button> -->
+

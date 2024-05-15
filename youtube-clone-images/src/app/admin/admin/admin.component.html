@@ -1,0 +1,9 @@
+<div class="images-grid">
+  <div class="image-container" *ngFor="let image of images">
+    <img [src]="image.image_path" alt="{{ image.title }}">
+    <h3>{{ image.title }}</h3>
+    <p>{{ image.description }}</p>
+    <p>{{ image.date_published }}</p>
+    <button (click)="deleteImage(image.id)">Delete</button>
+  </div>
+</div>

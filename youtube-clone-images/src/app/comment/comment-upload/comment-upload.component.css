@@ -1,0 +1,40 @@
+.comment-upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border: 1px solid #1374d5;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.comment-upload-input {
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  background-color: #ffffff00;
+  /* border: 1px solid rgba(255, 255, 255, 0); */
+  border-radius: 4px;
+  width: 97%;
+  height: 15vh;
+}
+
+
+.comment-upload-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  float: right;
+}
+
+.comment-upload-button:hover {
+  background-color: #0056b3;
+}
