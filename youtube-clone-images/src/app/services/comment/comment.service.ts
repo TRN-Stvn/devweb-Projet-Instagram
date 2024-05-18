@@ -24,9 +24,31 @@ export class CommentService {
     return await data.json() ?? [];
   }
 
-  async postComment(id_img: number, pseudo: string, contenu: string): Promise<void> {
+  // async postComment(id_img: number, pseudo: string, contenu: string): Promise<void> {
+  //   const newComment = {
+  //     id_image: id_img,
+  //     pseudo: pseudo,
+  //     contenu: contenu,
+  //     date_published: new Date() // Assuming the date is set on the client-side
+  //   };
+
+  //   const response = await fetch(`${this.baseUrl}/upload-com`, {
+  //     method: 'POST',
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     body: JSON.stringify(newComment)
+  //   });
+
+  //   if (!response.ok) {
+  //     throw new Error('Failed to post comment');
+  //   }
+  // }
+
+  async postComment(id_img: number, id_user: number, pseudo: string, contenu: string): Promise<void> {
     const newComment = {
       id_image: id_img,
+      id_user: id_user,
       pseudo: pseudo,
       contenu: contenu,
       date_published: new Date() // Assuming the date is set on the client-side
@@ -45,3 +67,4 @@ export class CommentService {
     }
   }
 }
+

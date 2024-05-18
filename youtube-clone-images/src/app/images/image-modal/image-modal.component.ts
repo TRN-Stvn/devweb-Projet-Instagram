@@ -5,6 +5,7 @@ import { Image } from '../../services/datas';
 import { CommentViewComponent } from "../../comment/comment-view/comment-view.component";
 import { CommentService } from '../../services/comment/comment.service';
 import { CommentUploadComponent } from "../../comment/comment-upload/comment-upload.component";
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-image-modal',
@@ -14,16 +15,21 @@ import { CommentUploadComponent } from "../../comment/comment-upload/comment-upl
   imports: [CommonModule, FormsModule, CommentViewComponent, CommentUploadComponent]
 })
 export class ImageModalComponent {
-  @Input()
-  image: any;
-  @Input() image_id!: number; // Added this line to declare 'image_id' as an input
+  @Input() image!: Image;  // Ensure this is correctly typed as Image
+  @Input() image_id!: number;
   newComment: string = '';
   isVisible: boolean = false;
-  selectedImage: any;
+  selectedImage: Image | null = null;
   CommentService: any;
+  isLoggedIn: boolean = false;
 
-  constructor() { }
+  constructor(private authService: AuthService) {
 
+
+    this.authService.userId.subscribe(id => {
+      this.isLoggedIn = !!id;
+    });
+  }
 
   // loadComments() {
   //   this.CommentService.getCommentsByIdImg(this.image_id).subscribe((comments: any[]) => {
@@ -39,7 +45,7 @@ export class ImageModalComponent {
   // }
 
   onBackdropClick(event: MouseEvent): void {
-    this.closeModal(); // Now this method will exist
+    this.closeModal();
   }
 
   closeModal(): void {
@@ -51,11 +57,10 @@ export class ImageModalComponent {
     this.isVisible = true;
   }
 
-  selectImage(image: any): void {
-    this.selectedImage = image;
-    // this.image_id = image.id;
-    console.log("Selected Image ID:", this.selectedImage.id);
-    this.openModal();  // Ensure this line is here to open the modal
+  selectImage(image: Image): void {
+    // console.log("Selected Image:", image);
+    this.image = image;
+    this.openModal();
   }
   getImageUrl(imagePath: string): string {
     return `http://localhost:5000/${imagePath}`;

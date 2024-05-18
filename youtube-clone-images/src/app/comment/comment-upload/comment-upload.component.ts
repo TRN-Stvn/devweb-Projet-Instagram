@@ -1,6 +1,7 @@
 import { Component, Input, SimpleChanges, inject } from '@angular/core';
 import { CommentService } from '../../services/comment/comment.service'; // Adjust the path as necessary
 import { FormsModule } from '@angular/forms'; // Import FormsModule here
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-comment-upload',
@@ -9,29 +10,72 @@ import { FormsModule } from '@angular/forms'; // Import FormsModule here
   templateUrl: './comment-upload.component.html',
   styleUrls: ['./comment-upload.component.css']
 })
+
+
 export class CommentUploadComponent {
   @Input() image_id!: number;
   commentText: string = '';
   CommentsService: CommentService = inject(CommentService);
+  authService: AuthService = inject(AuthService);
+  userId: number | null = null;
+  userFirstName: string | null = null;
 
+  constructor() {
+    this.authService.userId.subscribe(id => {
+      this.userId = id; // Make sure this is a number
+    });
+    this.authService.fetchAllUsers().then(users => {
+      this.authService.userId.subscribe(id => {
+        const user = users.find(user => user.id === id);
+        this.userFirstName = user ? user.firstName : null;
+      });
+      console.log("(comment upload)userId: " + this.userId);
+      console.log("(comment upload)userFirstName: " + this.userFirstName);
+    }).catch(error => {
+      console.error('Failed to fetch users:', error);
+    });
+  }
 
-  constructor() { }
-
+  // submitComment(): void {
+  //   if (this.userId && this.userFirstName) {
+  //     const newComment = {
+  //       image_id: this.image_id,
+  //       contenu: this.commentText,
+  //       pseudo: this.userFirstName, // Use the user's first name as pseudo
+  //       id_user: this.userId, // Include the user ID
+  //       date_published: new Date().toISOString() // Format date to ISO 8601
+  //     };
+  //     this.CommentsService.postComment(newComment).then(() => {
+  //       this.commentText = ''; // Clear the form
+  //       alert('Comment posted successfully!');
+  //     }).catch(error => {
+  //       console.error('Failed to post comment:', error);
+  //     });
+  //   } else {
+  //     console.error('User ID or first name is null');
+  //   }
+  // }
 
   submitComment(): void {
     const newComment = {
       image_id: this.image_id,
       contenu: this.commentText,
-      pseudo: 'YourUsername', // Replace with dynamic user data
+      id_user: this.userId,
+      pseudo: this.userFirstName, // Replace with dynamic user data
       date_published: new Date().toISOString() // Format date to ISO 8601
     };
     console.log(newComment);
-    this.CommentsService.postComment(this.image_id, "Test_before_auth", this.commentText).then(() => {
-      this.commentText = ''; // Clear the form
-      alert('Comment posted successfully!');
-    }).catch(error => {
-      console.error('Failed to post comment:', error);
-    });
+    if (this.userId !== null && this.userFirstName !== null) {
+      this.CommentsService.postComment(this.image_id, this.userId, this.userFirstName, this.commentText).then(() => {
+        this.commentText = ''; // Clear the form
+        alert('Comment posted successfully!');
+      }).catch(error => {
+        console.error('Failed to post comment:', error);
+      });
+    } else {
+      console.error('User ID or first name is null');
+    }
+
   }
 
   // ngOnChanges(changes: SimpleChanges) {
@@ -42,9 +86,5 @@ export class CommentUploadComponent {
   //     console.log("image id : " + this.image_id);
   //   }
   // }
-
-
-
 }
-
 

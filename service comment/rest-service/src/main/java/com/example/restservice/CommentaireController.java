@@ -18,7 +18,7 @@ public class CommentaireController {
 	private static final String template = "Hello, %s!";
 	@GetMapping("/commentaire")
 	public Commentaire Commentaire(@RequestParam(value = "name", defaultValue = "World") String name) {
-		return new Commentaire(1, "pseudo1", String.format(template, name));
+		return new Commentaire(1, "pseudo1", String.format(template, name), null);
 	}
 
 	@Autowired

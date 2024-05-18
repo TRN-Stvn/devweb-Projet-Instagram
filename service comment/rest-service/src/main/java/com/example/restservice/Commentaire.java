@@ -12,16 +12,18 @@ public class Commentaire {
     private long id_image;
     private String pseudo;
     private String contenu;
+    private Long id_user;
 
     @CreatedDate
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
     private Date date_published;
 
     // Getters and setters
-    public Commentaire(long id_image, String pseudo, String contenu) {
+    public Commentaire(long id_image, String pseudo, String contenu, Long id_user) {
         this.id_image = id_image;
         this.pseudo = pseudo;
         this.contenu = contenu;
+        this.id_user = id_user; // Set id_user, allowing null
         this.date_published = new Date(); // Set the current date and time
     }
 
@@ -31,6 +33,14 @@ public class Commentaire {
 
     public long getId_image() {
         return id_image;
+    }
+
+    public Long getId_user() {
+        return id_user;
+    }
+
+    public void setId_user(Long id_user) {
+        this.id_user = id_user;
     }
 
     public String getPseudo() {
