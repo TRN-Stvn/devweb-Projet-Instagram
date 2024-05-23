@@ -45,6 +45,13 @@ After building the Docker containers, you can launch the interface:
   docker-compose logs [service-name]
   ```
 
+## Collaborator Contributions
+- **[Tom Beaurin]**: Contributed to the development of  the **images** management system + Service_Comments(ver propre). 
+- **[Amaury Dubuc Tabouy]**: Contributed to the development of the **authentication** service system. 
+- **[AUDIE Cédric]**: Contributed to the development of the **comment** management system. 
+- **[TRAN Thien Tri Steven ]**: Contributed to the development of the **interface**. 
+- **[BOURRE Blanche]**: Contributed to the **design** of the **interface**. 
+
 ## Troubleshooting
 If you encounter any issues with building the Docker containers or launching the interface, ensure that:
 - Docker and Docker Compose are correctly installed and updated.
