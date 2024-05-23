@@ -64,15 +64,15 @@ services:
     networks:
       - app-network
 
-  youtube-clone-images:
-    build: ./youtube-clone-images
-    ports:
-      - "4200:4200"
-    command: ng serve
-    depends_on:
-      - auth-service
-      - image-service
-      - comment-service
+  # youtube-clone-images:
+  #   build: ./youtube-clone-images
+  #   ports:
+  #     - "4200:4200"
+  #   command: ng serve
+  #   depends_on:
+  #     - auth-service
+  #     - image-service
+  #     - comment-service
     # conditions:
     #   - condition: service_healthy
 
