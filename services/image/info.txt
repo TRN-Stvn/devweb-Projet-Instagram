@@ -1,0 +1,2 @@
+Envoyer une image:
+curl -X POST -F "user_id=1" -F "title=Example Image" -F "description=This is a test image" -F "image=@C:\Users\Tom\OneDrive\Pictures\DSC04523.JPG" http://localhost:5000/upload
