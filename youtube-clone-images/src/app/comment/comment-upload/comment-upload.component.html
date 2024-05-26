@@ -1,5 +1,5 @@
 <form class="comment-upload-form" (ngSubmit)="submitComment()">
     <textarea class="comment-upload-input" type="text" [(ngModel)]="commentText" placeholder="Write a comment..."
         name="commentContent"></textarea>
-    <button class="comment-upload-button" type="submit">Post Comment</button>
+    <button class="comment-upload-button" type="submit" [disabled]="!isLoggedIn || commentText.trim().length === 0">Post Comment</button>
 </form>

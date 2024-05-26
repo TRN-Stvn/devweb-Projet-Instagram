@@ -35,7 +35,7 @@ After building the Docker containers, you can launch the interface:
    ```bash
    docker-compose up
    ```
-2. The `youtube-clone-images` service is configured to launch the interface using Angular's `ng serve`. This service will be available on port 4200, and you can access it by navigating to `http://localhost:4200` in your web browser.
+2. The `youtube-clone-images` service is configured to launch the interface using Angular's `ng serve` command from the `youtube-clone-images` directory. This service will be available on port 4200, and you can access it by navigating to `http://localhost:4200` in your web browser.
 
 ## Additional Commands
 - To stop all services, you can use:

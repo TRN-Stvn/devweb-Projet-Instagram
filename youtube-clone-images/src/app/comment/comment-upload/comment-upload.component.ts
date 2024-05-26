@@ -19,10 +19,13 @@ export class CommentUploadComponent {
   authService: AuthService = inject(AuthService);
   userId: number | null = null;
   userFirstName: string | null = null;
+  isLoggedIn: boolean = false;
 
   constructor() {
     this.authService.userId.subscribe(id => {
-      this.userId = id; // Make sure this is a number
+      this.userId = id;
+      this.isLoggedIn = !!id;
+      // Make sure this is a number
     });
     this.authService.fetchAllUsers().then(users => {
       this.authService.userId.subscribe(id => {
