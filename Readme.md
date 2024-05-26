@@ -12,14 +12,16 @@ This guide provides instructions on how to build the Docker containers for the Y
 To build the Docker containers required for the project, follow these steps:
 1. Ensure Docker and Docker Compose are installed on your system.
 2. Navigate to the root directory of the project where the main `docker-compose.yml` file is located.
-3. Run the following command to build all the services:
+3. Before building the containers, ensure the `.env` file is placed in the `services/Auth` directory.
+4. Run the following command to build all the services:
    ```bash
    docker-compose build
    ```
 Alternatively, if you need to build individual services:
 
 2. Navigate to the root directory of the project where the `docker-compose.yml` files are located.
-3. Run the following commands to build the services individually:
+3. Before building the individual services, ensure the `.env` file is placed in the `services/Auth` directory.
+4. Run the following commands to build the services individually:
    ```bash
    docker-compose -f services/Auth/docker-compose.yml build
    docker-compose -f services/comment/rest-service/docker-compose.yml build
