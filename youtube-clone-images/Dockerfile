@@ -1,28 +1,22 @@
-# Step 1: Use a Node.js base image that meets the minimum version requirement
-FROM node:18.13 as build
+# Use an updated official Node runtime as a parent image
+FROM node:20.13
 
-# Step 2: Set the working directory
+# Set the working directory
 WORKDIR /app
 
-# Step 3: Copy package.json and package-lock.json
+# Copy package.json and install dependencies
 COPY package*.json ./
-
-# Step 4: Install dependencies
 RUN npm install
 
-# Step 5: Copy the rest of your app's source code
+# Install Angular CLI globally
+RUN npm install -g @angular/cli
+
+# Copy the rest of your app's source code
 COPY . .
 
-# Step 6: Build the application
-RUN npm run build
+# Make port 4200 available to the world outside this container
+EXPOSE 4200
 
-# Step 7: Use nginx to serve the application
-FROM nginx:alpine
-COPY --from=build /app/dist/youtube-clone-images /usr/share/nginx/html
-
-# Step 8: Expose port 80
-EXPOSE 80
-
-# Step 9: Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Run ng serve
+CMD ["ng", "serve", "--host", "0.0.0.0"]
 

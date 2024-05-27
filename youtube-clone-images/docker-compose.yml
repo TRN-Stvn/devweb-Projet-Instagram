@@ -4,15 +4,15 @@ services:
     ports:
       - "4200:4200"
   comment-service:
-    build: ./Backend/service comment/rest-service
+    build: ../services/comment
     ports:
       - "8080:8080"
   image-service:
-    build: ./Backend/service image
+    build: ../services/image
     ports:
       - "5000:5000"
   auth-service:
-    build: ./Backend/Auth
+    build: ../services/Auth
     ports:
       - "8081:8081"
 
