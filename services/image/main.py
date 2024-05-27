@@ -4,6 +4,7 @@ from flask import request
 from flask_restful import Resource, Api
 from werkzeug.utils import secure_filename
 import os
+from flask_cors import CORS
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
@@ -20,7 +21,8 @@ class Image(db.Model):
     date_published = db.Column(db.DateTime, default=lambda: datetime.now(ZoneInfo('Pacific/Bougainville')))
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='uploads', static_url_path='/uploads')
+CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///images.db'
 db.init_app(app)
 
