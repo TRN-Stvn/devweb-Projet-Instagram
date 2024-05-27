@@ -102,6 +102,7 @@ textarea {
 .author {
   font-style: italic;
   color: #666;
+  font-size: 0.9em;
 }
 
 .image-section {
@@ -123,11 +124,34 @@ textarea {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  margin: 20px;
+  margin: 10px;
   /* padding: 15px; */
   height: 23vh;
   background-color: #f8f9fa;
   border: 1px solid #f8f9fa;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.date-publish {
+  font-size: 0.8em; /* Smaller font size for the date */
+  color: #666; /* Optionally, change the color to a lighter shade */
+}
+
+.modal .data-section h3 {
+  margin-top: 0; /* Supprimer la marge supérieure du titre */
+  margin-bottom: 10px; /* Ajouter une marge inférieure pour séparer le titre de la description */
+}
+
+.modal .data-section p {
+  margin-top: 0; /* Supprimer la marge supérieure de la description */
+  margin-bottom: 20px;
+}
+
+.modal .data-section .author {
+  margin-bottom: 5px; /* Ajouter une marge inférieure pour séparer l'auteur de la date */
+}
+
+.modal .data-section .date-published {
+  margin-top: 5px; /* Ajouter une marge supérieure pour séparer la date du reste du contenu */
 }

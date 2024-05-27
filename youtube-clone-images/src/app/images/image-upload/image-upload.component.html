@@ -7,8 +7,7 @@
   <input type="number" formControlName="userId" placeholder="User ID"> -->
   <label>Category:</label>
   <input type="text" formControlName="category" placeholder="Category (optional)">
- <input type="file" (change)="onFileSelect($event)" accept="image/*">
+ <input type="file" (change)="onFileSelect($event)">
  <button [disabled]="!uploadForm.valid || !isLoggedIn" type="submit">Upload</button>
 </form>
-
 

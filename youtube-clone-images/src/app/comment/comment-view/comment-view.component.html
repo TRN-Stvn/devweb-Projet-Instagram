@@ -2,7 +2,7 @@
     <div class="comment-container" *ngFor="let comment of comments">
         <h3 class="comment-author">{{ comment.pseudo }}</h3>
         <p class="comment-content">{{ comment.contenu }}</p>
-        <p class="comment-date">{{ comment.date_published }}</p>
+        <p class="comment-date">Publié le {{ comment.date_published | date: 'd MMMM y, HH:mm'}}</p>
     </div>
 </div>
 

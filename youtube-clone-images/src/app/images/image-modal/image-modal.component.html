@@ -6,9 +6,9 @@
     <div class="data-section" style="flex: 1; overflow-y: auto;height: 80vh">
       <button class="close-button" (click)="closeModal()">&times;</button>
       <h3>{{ image.title }}</h3>
-      <p class="author">Author: {{ image.author }}</p>
       <p>{{ image.description }}</p>
-      <p>Date Published: {{ image.date_published | date:'medium' }}</p>
+      <p class="author">Author: {{ image.author }}</p>
+      <p class="date-publish">Date Published: {{ image.date_published | date: 'd MMMM y, HH:mm'  }}</p>
       <div class="comment-section">
         <div class="comment-list">
           <app-comment-view [image_id]="image.id"></app-comment-view>

@@ -1,19 +1,69 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f4f4f9;
+  color: #333;
+}
+
+/* Header Styles */
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  background: rgb(238, 209, 153);
-}
-.logo {
-  height: 50px;
-}
-button {
-  padding: 0.5rem 1rem;
-  font-size: 1rem;
-}
-.image-display, .image-upload {
-  margin: 1rem;
+  padding: 1.5rem 5rem;
+  background: #11243b; /* Subtle blue-gray */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.logo {
+  height: 50px;
+  border: none;
+  border-radius: 15px;
+}
+
+button {
+  padding: 0.5rem 1.5rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: #e70909; /* Soft red */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color:#c51111; /* Slightly darker red */
+}
+
+/* Section Styles */
+section {
+  margin: 2rem auto;
+  padding: 1rem;
+  max-width: 1200px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.image-display, .image-upload {
+  margin: 1rem 0;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+  }
+
+  .logo {
+    margin-bottom: 1rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 0.5rem;
+  }
+}

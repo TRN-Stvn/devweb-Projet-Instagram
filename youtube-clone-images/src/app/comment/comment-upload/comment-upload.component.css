@@ -22,9 +22,10 @@
   height: 15vh;
 }
 
+
 .comment-upload-button {
-  padding: 10px 20px;
-  font-size: 16px;
+  padding: 8px 16px;
+  font-size: 14px;
   background-color: #007bff;
   color: white;
   border: none;
@@ -38,7 +39,6 @@
   background-color: #0056b3;
 }
 
-.comment-upload-button:disabled {
-  background-color: #cccccc;
-  cursor: not-allowed;
+.comment-upload-input::placeholder {
+  font-size: 14px; /* Réduire la taille de la police du placeholder */
 }

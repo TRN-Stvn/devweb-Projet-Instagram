@@ -8,6 +8,7 @@ This guide provides instructions on how to build the Docker containers for the Y
 - Docker Compose
 - Node.js
 
+
 ## Building the Docker Containers
 To build the Docker containers required for the project, follow these steps:
 1. Ensure Docker and Docker Compose are installed on your system.
@@ -48,7 +49,7 @@ After building the Docker containers, you can launch the interface:
   ```
 
 ## Collaborator Contributions
-- **[Tom Beaurin]**: Contributed to the development of  the **images** management system + Service_Comments(ver propre). 
+- **[Tom Beaurain]**: Contributed to the development of  the **images** management system + Service_Comments(ver propre). 
 - **[Amaury Dubuc Tabouy]**: Contributed to the development of the **authentication** service system. 
 - **[AUDIE Cédric]**: Contributed to the development of the **comment** management system. 
 - **[TRAN Thien Tri Steven ]**: Contributed to the development of the **interface**. 

@@ -1,29 +1,57 @@
 .images-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 10px;
+  gap: 20px;
   padding: 20px;
 }
-.images-grid .image-container {
-  border: 2px solid #ccc; /* Add a border to each image container */
-  padding: 10px;
-  background-color: #f9f9f9; /* Light grey background for each container */
-  max-width: 300px; /* Limit the width of each image container */
-  max-height: 500px; /* Limit the height of each image container */
-  overflow: auto; /* Add scroll if content exceeds container size */
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
 }
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  overflow: hidden;
+}
+
 img {
   width: 100%;
   height: auto;
-  max-width: 100%; /* Ensure the image does not exceed the container width */
-  max-height: 300px; /* Limit and crop the image height */
-  object-fit: cover; /* Crop to cover the container */
-  border-radius: 8px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
   transition: transform 0.3s ease;
 }
+
 img:hover {
   transform: scale(1.05);
-  cursor: pointer;
 }
 
+.text-wrapper {
+  padding: 20px;
+  background-color: #f9f9f9cf;
+}
 
+.text-wrapper h3, .text-wrapper p {
+  margin: 0;
+}
+
+.text-wrapper h3.title {
+  margin-bottom: 5px; /* Ajout d'un grand espace entre la description et la date */
+}
+
+.text-wrapper p.description {
+  margin-bottom: 20px; /* Ajout d'un grand espace entre la description et la date */
+}
+
+.date-published {
+  font-size: 0.8em;
+  color: #666;
+  
+}
