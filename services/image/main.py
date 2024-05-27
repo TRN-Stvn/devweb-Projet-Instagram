@@ -17,7 +17,7 @@ class Image(db.Model):
     description = db.Column(db.Text, nullable=True)
     image_path = db.Column(db.String(255), nullable=False)
     category = db.Column(db.String(255), nullable=True)
-    date_published = db.Column(db.DateTime, default=lambda: (datetime.now(timezone.utc)) + timedelta(hours=11)) # Utilisation de datetime conscient du fuseau horaire
+    date_published = db.Column(db.DateTime, default=lambda: (datetime.now(timezone.utc)) + timedelta(hours=11)) 
 
 
 app = Flask(__name__)
