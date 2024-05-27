@@ -1,7 +1,7 @@
 # Project Setup and Execution Guide for YouTube Clone
 
 ## Overview
-This guide provides instructions on how to build the Docker containers for the YouTube Clone project and launch the interface using Angular's `ng serve` command. The YouTube Clone project is designed to mimic the basic functionalities of the popular video-sharing platform, YouTube, allowing users to upload, view, and comment on videos.
+This guide provides instructions on how to build the Docker containers for the YouTube Clone project and launch the interface. The YouTube Clone project is designed to mimic the basic functionalities of the popular video-sharing platform, YouTube, allowing users to upload, view, and comment on videos.
 
 ## Prerequisites
 - Docker
@@ -13,7 +13,7 @@ This guide provides instructions on how to build the Docker containers for the Y
 To build the Docker containers required for the project, follow these steps:
 1. Ensure Docker and Docker Compose are installed on your system.
 2. Navigate to the root directory of the project where the main `docker-compose.yml` file is located.
-3. Before building the containers, ensure the `.env` file is placed in the `services/Auth` directory.
+3. **Before building the containers, ensure the `.env` file is placed in the `services/Auth` directory.**
 4. Run the following command to build all the services:
    ```bash
    docker-compose build
@@ -27,6 +27,7 @@ Alternatively, if you need to build individual services:
    docker-compose -f services/Auth/docker-compose.yml build
    docker-compose -f services/comment/rest-service/docker-compose.yml build
    docker-compose -f services/image/docker-compose.yml build
+   docker-compose -f services/youtube-clone/docker-compose.yml build
    ```
 
 ## Launching the Interface
@@ -36,7 +37,7 @@ After building the Docker containers, you can launch the interface:
    ```bash
    docker-compose up
    ```
-2. The `youtube-clone-images` service is configured to launch the interface using Angular's `ng serve` command from the `youtube-clone-images` directory. This service will be available on port 4200, and you can access it by navigating to `http://localhost:4200` in your web browser.
+2. The interface will be automatically launched and available on port 4200. You can access it by navigating to `http://localhost:4200` in your web browser.
 
 ## Additional Commands
 - To stop all services, you can use:
