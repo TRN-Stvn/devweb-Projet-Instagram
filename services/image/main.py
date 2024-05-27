@@ -4,8 +4,8 @@ from flask import request
 from flask_restful import Resource, Api
 from werkzeug.utils import secure_filename
 import os
-from datetime import datetime, timezone
-from zoneinfo import ZoneInfo
+from datetime import datetime, timezone, timedelta
+
 
 
 db = SQLAlchemy()
@@ -17,7 +17,7 @@ class Image(db.Model):
     description = db.Column(db.Text, nullable=True)
     image_path = db.Column(db.String(255), nullable=False)
     category = db.Column(db.String(255), nullable=True)
-    date_published = db.Column(db.DateTime, default=lambda: datetime.now(ZoneInfo('Pacific/Bougainville')))
+    date_published = db.Column(db.DateTime, default=lambda: (datetime.now(timezone.utc)) + timedelta(hours=11)) # Utilisation de datetime conscient du fuseau horaire
 
 
 app = Flask(__name__)
