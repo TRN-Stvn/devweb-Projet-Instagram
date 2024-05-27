@@ -5,7 +5,8 @@ from flask_restful import Resource, Api
 from werkzeug.utils import secure_filename
 import os
 from datetime import datetime, timezone
-from flask_cors import CORS
+from zoneinfo import ZoneInfo
+
 
 db = SQLAlchemy()
 
@@ -16,11 +17,10 @@ class Image(db.Model):
     description = db.Column(db.Text, nullable=True)
     image_path = db.Column(db.String(255), nullable=False)
     category = db.Column(db.String(255), nullable=True)
-    date_published = db.Column(db.DateTime, default=lambda: datetime.now(timezone.utc))  # Utilisation de datetime conscient du fuseau horaire
+    date_published = db.Column(db.DateTime, default=lambda: datetime.now(ZoneInfo('Pacific/Bougainville')))
 
 
-app = Flask(__name__, static_folder='uploads', static_url_path='/uploads')
-CORS(app)
+app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///images.db'
 db.init_app(app)
 
